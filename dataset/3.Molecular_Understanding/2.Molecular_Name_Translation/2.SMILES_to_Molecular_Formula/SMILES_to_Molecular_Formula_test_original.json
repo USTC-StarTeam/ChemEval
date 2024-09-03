@@ -1,0 +1,20 @@
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CC(=O)Nc1cccc(-c2nc(-c3ccc(Oc4ccccc4)cc3)no2)c1.", "answer": "C22H17N3O3"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is Cc1sc(C(O)c2ccnn2C)cc1Br.", "answer": "C10H11BrN2OS"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCCN(CC#Cc1ccccc1)C(=O)c1cnc2ccccn12.", "answer": "C20H19N3O"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCCCCCCC(NCCC)C1(OC)CCCCC1.", "answer": "C18H37NO"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is O=C(CC1Oc2ccccc2NC1=O)NOCc1ccccc1.", "answer": "C17H16N2O4"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is O=C(NCC(O)c1cccc(F)c1)c1ccc(Br)cc1Cl.", "answer": "C15H12BrClFNO2"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is NCCc1cc2ncoc2cc1Br.", "answer": "C9H9BrN2O"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is C=CCOc1cc(CC)c(C)c(C(C)=O)c1C(C)=O.", "answer": "C16H20O3"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is Cc1nn(-c2ccccn2)c(N(C)C)c1C=O.", "answer": "C12H14N4O"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCn1nc(C)c(C(C)N2CC(N3CCNCC3)C2)c1C.", "answer": "C16H29N5"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CC(=O)N1CCN(CC2=CC=CC(C(=O)[O-])=C2)CC1. Can you reveal its molecular formula?", "answer": "C14H17N2O3-"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCN1CCC(NC2=CC(C(=O)N(C)C)=CC=C2C)CC1.", "answer": "C17H27N3O"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCCCCC(C)NC(=O)C=CC1=CC(OC)=C(OC)C(OC)=C1.", "answer": "C19H29NO4"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCCCCOC1=CC(C(=O)NC(CSC)CC2=CC=C(O)C=C2)=CC=C1OC. Can you tell me?", "answer": "C23H31NO4S"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CN1CCCN(S(=O)(=O)C2=CSC(C(=O)O)=C2)CC1. Can you tell me?", "answer": "C11H16N2O4S2"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCCCN(CC1CC(C(C)(C)C)CCC1O)C1CC1. Can you reveal its molecular formula?", "answer": "C18H35NO"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CC(C)(C)C(=O)NC1=CN=CC=C1C(O)C1=CC=C(F)C=C1Cl.", "answer": "C17H18ClFN2O2"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CC(=O)N1CCN(C2=CC=C(C3=CC(C(=O)NCC4CCC(CNC(=O)O)CC4)=C4C=CC=CC4=N3)C=N2)CC1.", "answer": "C30H36N6O4"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCOC(=O)CCCN1N=NN=C1N.", "answer": "C7H13N5O2"}
+{"query": " Please tell me the molecular formula of the following molecules given by SMILES. The molecule is CCCNC(C1=CC=CC2=C1OCCO2)C(C)CCOC.", "answer": "C17H27NO3"}

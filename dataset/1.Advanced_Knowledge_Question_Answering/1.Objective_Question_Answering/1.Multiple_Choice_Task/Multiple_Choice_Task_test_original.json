@@ -1,0 +1,20 @@
+{"query": "阿托品的结构类型是()\nA、喹啉类 \nB、异喹啉类 \nC、莨著烷类 \nD、苄基异喹啉类", "answer": "C"}
+{"query": "托品(tropine)是一种很重要的天然产物,其结构如下图所示,目前人工合成的方法十分伽捷。请问下面哪个反应与由丁二醛、甲胺和3-氧代戊二酸出发两步合成托品的核心反应类似?\nA、迈克尔加成 \nB、Mannich反应 \nC、脱羧反应 \nD、羟醛缩合反应", "answer": "B"}
+{"query": "以下哪种方法可以从炔烃制备顺式烯烃?\nA、硼氢化钠还原 \nB、硼氢化-还原 \nC、氢化铝锂还原 \nD、碱金属和液氨还原 ", "answer": "B"}
+{"query": "具有酚羟基或羧基的游离蒽醌类成分有一定酸性,可用的提取方法是()\nA、酸溶碱沉法 \nB、碱溶酸沉法 \nC、水提醇沉法 \nD、醇提水沉法", "answer": "B"}
+{"query": "过饱和溶液中溶剂的化学势与纯溶剂的化学势相比()\nA、前者高于后者 \nB、前者低于后者 \nC、二者相等 \nD、不可比较", "answer": "B"}
+{"query": "$\\mathrm{Cr}$与$\\mathrm{CO}$形成羰基配合物$\\mathrm{CrCO_{6}}$,其分子点群为()\nA、D4h \nB、Td \nC、Oh \nD、D6h", "answer": "C"}
+{"query": "以下哪一种化学反应并不属于“催化反应”()\nA、歧化反应 \nB、过氧化呋喃反应 \nC、银离子捕获氧反应 \nD、还原缩合反应", "answer": "A"}
+{"query": "某电池的电动势E是正值,则该电池反应：()\nA、逆向自发进行 \nB、正向自发进行 \nC、处于平衡状态 \nD、无法判断反应方向", "answer": "B"}
+{"query": "理论上认为实现气体变成液体可采用(    )。\nA、单纯降温 \nB、单纯压缩 \nC、单纯加压 \nD、三者都不行", "answer": "A"}
+{"query": "某气态物质$\\mathrm{AB}$在高温下建立下列平衡$\\mathrm{AB}(\\mathrm{g}){ \\rightleftharpoons}\\mathrm{A}(\\mathrm{g})+\\mathrm{B}(\\mathrm{g})$若把$1\\mathrm{~mol}$此气体在$\\mathrm{T}=300 \\mathrm{~K}$、$\\mathrm{p}=1\\mathrm{~atm}$下,放入某密闭容器中,加热到$600 \\mathrm{~K}$时有25%离解,此体系的内部压力(大气压)为(   )。\nA、2.5  \nB、1.0  \nC、0.5  \nD、1.25", "answer": "A"}
+{"query": "目前已进入实用阶段、应用最广的形状记忆合金是：()\nA、$\\mathrm{Ti}-\\mathrm{Ni}-\\mathrm{Cu}$\nB、$\\mathrm{Ti}-\\mathrm{Ni}$ \nC、$\\mathrm{Cu}-\\mathrm{Zn}$ \nD、$\\mathrm{Cu}-\\mathrm{Zn}-\\mathrm{Al}$", "answer": "B"}
+{"query": "以下哪一项不是以增强纤维的类型来分类的聚合物复合材料?()\nA、混杂纤维聚合物复合材料 \nB、天然纤维聚合物复合材料 \nC、短纤维聚合物复合材料 \nD、有机纤维聚合物复合材料", "answer": "C"}
+{"query": "从精密度好即可推断分析结果可靠的前提是(      )。\nA、偶然误差小 \nB、系统误差小 \nC、标准偏差小 \nD、平均偏差小", "answer": "B"}
+{"query": "如果要求分析结果达到$0.1\\%$的准确度,使用一般电光天平称取试样时至少应称取的质量为(    )。\nA、$0.05 \\mathrm{~g}$ \nB、$0.1 \\mathrm{~g}$ \nC、$0.2 \\mathrm{~g}$ \nD、$1.0 \\mathrm{~g}$", "answer": "C"}
+{"query": "阳离子聚合的特点可以用以下哪种方式来描述()\nA、慢引发,快增长,速终止\nB、快引发,快增长,易转移,难终止\nC、快引发,慢增长,无转移,无终止 \nD、慢引发,快增长,易转移,难终止", "answer": "B"}
+{"query": "()是由乙烯单体和少量$\\alpha-$烯烃共聚而得。\nA、LDPE \nB、HDPE \nC、LLDPE \nD、POM", "answer": "C"}
+{"query": "下列有关糖有氧氧化的叙述中, 哪一项是错误的? ( )。\nA、糖有氧氧化的产物是$\\mathrm{CO}_{2}$及$\\mathrm{H}_{2}\\mathrm{O}$\nB、糖有氧氧化可抑制糖酵解\nC、糖有氧氧化是细胞获取能量的主要方式\nD、三羖酸循环是在糖有氧氧化时三大营养素相互转变的途径", "answer": "D"}
+{"query": "下列哪种碱基只存在于RNA而不存在于DNA中?()。\nA、腺嘌呤 \nB、鸟嘌呤 \nC、尿嘧啶 \nD、胸腺嘧啶", "answer": "C"}
+{"query": "关于$\\Delta \\mathrm{H}$,下面哪种说法正确(   )。\nA、因为$\\Delta \\mathrm{H}=\\mathrm{Q_{p}}$,所以只有恒压过程才有$\\Delta \\mathrm{H}$\nB、因为$\\Delta \\mathrm{H}=\\mathrm{Q_{p}}$,所以恒压过程只有热交换,而无功交换 \nC、因为$\\Delta \\mathrm{H}=\\mathrm{Q_{p}}$,所以在恒压过程中,焓不再是状态函数 \nD、因为$\\Delta \\mathrm{H}=\\mathrm{Q_{p}}$,所以焓变与恒压过程热相等", "answer": "D"}
+{"query": "自然界中各种自发过程,都遵循一些共同的规律,但下面哪个不是(   )。\nA、物质不灭 \nB、能量守恒 \nC、有一定方向和限度 ", "answer": "C"}
