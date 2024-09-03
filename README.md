@@ -12,6 +12,8 @@ We hope ChemEval will facilitate the application of large language models in the
 - [Experiment Setting](#experiment-setting)
 - [Data](#data)
 - [TODO](#todo)
+- [Licenses](#licenses)
+- [Citation](#citation)
 
 ## Results
 
