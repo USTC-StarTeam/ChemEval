@@ -70,10 +70,10 @@ The ChemEval dataset is licensed under a [Creative Commons Attribution-NonCommer
 Please cite our paper if you use our dataset.
 
 ```
-@article{ChemEval,
-title={}, 
-author={}
-journal={},
-year={}
+@article{huang2024chemeval,
+  title={ChemEval: A Comprehensive Multi-Level Chemical Evaluation for Large Language Models},
+  author={Huang, Yuqing and Zhang, Rongyang and He, Xuesong and Zhi, Xuyang and Wang, Hao and Li, Xin and Xu, Feiyang and Liu, Deguang and Liang, Huadong and Li, Yi and others},
+  journal={arXiv preprint arXiv:2409.13989},
+  year={2024}
 }
 ```
