@@ -1,71 +1,81 @@
-![image](./resourse/title.jpg)
+# USAGE
 
-**ChemEval** is specifically designed to evaluate the capabilities of LLMs within the chemical domain, whcich encompass 4 levels, 12 dimensions, and a total of 42 distinct tasks, covering a vast array of issues within the domain of chemical research. Please check our paper for more details.
+## Textual
 
-We hope ChemEval will facilitate the application of large language models in the field of chemistry research.
+### Code Evaluate
 
-![image](./resourse/ChemEval.png)
+The data after evaluating n times will be placed in the "dataset\_ntimes" folder, organized by model name, with the structure as follows:
 
-## Table of Contents
+```
+dataset_ntimes/
+├── model_1/
+│   ├── model_1_nt.json
+└── model_2/
+    ├── model_2_nt.json
+└── ...
+```
 
-- [Results](#results)
-- [Experiment Setting](#experiment-setting)
-- [Data](#data)
-- [TODO](#todo)
-- [Licenses](#licenses)
-- [Citation](#citation)
+#### STEP 1
+Modify the `dir_path=path/to/dataset_ntimes` in `1_Split_filename.py` and run the file to split different task files based on the "filename" field.
 
-## Results
+#### STEP 2
+Modify the `file_dir=path/to/dataset_ntimes` in `2_Extract.py` and run the file to extract the answers from the model responses and generate JSONL files, which will be placed in the `result_ntimes` folder with the following structure:
 
-Below are the results of models in 0-shot learning in our experiment setting. In summary, general LLMs excel in basic knowledge tasks due to their extensive pre-training, while specialized chemical LLMs outperform in chemical expertise tasks, highlighting the value of domain-specific training. However, specialized LLMs face challenges in instruction fine-tuning and suffer from catastrophic forgetting, affecting their foundational NLP capabilities. Few-shot prompting improves text processing for some models but not for others, particularly those with specialized chemical knowledge. Lastly, model scaling positively impacts performance, with larger models like LlaMA3-70B showing better comprehension and reasoning abilities in complex chemical tasks.
+```
+result_ntimes/
+├── model_1/
+│   ├── 0shot/
+│   │   ├── 1t/
+│   │   │   ├── task_dir_1/
+│   │   │   │   ├──task_1.json
+│   │   │   │   ├──task_1.jsonl
+│   │   │   │   ├──task_2.json
+│   │   │   │   ├──task_2.jsonl
+│   │   │   │   ├──...
+│   │   ├── 2t/
+│   │   │   ├── task_dir_1/
+│   │   │   │   ├──task_1.json
+│   │   │   │   ├──task_1.jsonl
+│   │   │   │   ├──...
+│   ├── 3shot/
+│   │   ├──...
+└── ...
+```
 
-![image](./resourse/result.jpg)
+#### STEP 3
+Modify the `root_path=path/to/result_ntimes` in `3_Evaluate.py` and run the file to obtain the evaluation results.
 
-## Experiment Setting
+### LLM Evaluate
+#### STEP 1
+Modify the `folder_path` and `output_file` in `1_prompt_chem.py`, then run the file to submit for LLM evaluation.
 
-### Models
+#### STEP 2
+Modify the `file_path` in `2_L1_task_eval.py` and run to obtain metrics for multiple-choice, true/false, fill-in-the-blank, short answer, and calculation tasks. The results will be displayed in an Excel file.
 
-![image](./resourse/models.png)
+#### STEP 3
+Modify the `foler_path` and `excel_path` in `3_other_task_eval.py`,then run the file to obtain metrics for abstract writing, outlining, reaction intermediates, single-step synthesis, multi-step synthesis, and physicochemical property tasks. The results will be displayed in an Excel file.
 
-We assesses the chemical prowess of LLMs, including major general models and some chemically fine-tuned ones. GPT-4 from OpenAI is a top performer, while Anthropic's Claude-3.5 is noted for surpassing GPT-4. Claude-3.5-Sonnet sets new benchmarks. Baidu's ERNIE and Moonshot AI's Kimi are advanced content creation tools. Meta AI's LLaMA is a leading open-weight model, with LLaMA3-8B and LLaMA3-70B evaluated here. ZhipuAI's GLM-4 outperforms LLaMA3-8B, and DeepSeek's DeepSeek-V2 is a robust MoE model comparable to GPT-4-turbo.
+## Multimodal
+### STEP 1
+Run `1_prompt_chem` to obtain the evaluation data from the LLM.
 
-Specialized LLMs like ChemDFM, based on LLaMA-13B, excel in chemical tasks, outperforming GPT-4. LlaSMol, with Mistral as its base, significantly outperforms Claude-3.5-Sonnet in chemistry. ChemLLM by AI4Chem predicts chemical properties and reactions, while ChemSpark is trained on a mixed dataset of general and chemical Q&A.
+### STEP 2
+Run `2_LLM_evaluate` to obtain the evaluation results from the LLM.
 
-### Metric
+### STEP 3
+Run `3_code_evaluate` to obtain the evaluation results using code.
 
-We utilize a range of evaluation metrics to comprehensively assess our models' performance across diverse tasks. For the majority of tasks, we utilize the F1 score and Accuracy. In addition, we utilize BLEU, Exact Match, RMSE(Valid Num), Rank and Overlap in different tasks to meet the needs of different tasks. It is worth noting that Valid Num refers to the number of valid outputs by models and the value of RMSE is obtained through the weighted average of valid output. For some tasks with short answers, we only use 2-gram BLEU to evaluate the answers. For specific tasks like synthetic pathway recommendation, our evaluation combines automated metrics with expert manual review to ensure accuracy and professional insight. This framework ensures a detailed and effective evaluation of model performance across different settings.
+# Data
 
-## Data
+https://huggingface.co/datasets/Ooo1/ChemEval
 
-Example of question in Advanced Knowledge Questions:
-
-![image](./resourse/example1.png)
-
-Example of question in Chemical Literature Comprehension:
-
-![image](./resourse/example2.png)
-
-Example of question in Molecular Understanding:
-
-![image](./resourse/example3.jpg)
-
-Example of question in Scientific Knowledge Deduction:
-
-![image](./resourse/example4.jpg)
-
-## TODO
-
-- [ ] incorporation of multimodal tasks
-
-- [ ] add results of more API-based models
-
-## Licenses
+# Licenses
 
 [![CC BY-NC-SA 4.0](https://camo.githubusercontent.com/f61dcd7e9460d79b9e8e19683c964e21cc2455ff9d8860cc5ca30f35457be635/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d434325323042592d2d4e432d2d5341253230342e302d6c69676874677265792e737667)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 The ChemEval dataset is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-## Citation
+# Citation
 
 Please cite our paper if you use our dataset.
 

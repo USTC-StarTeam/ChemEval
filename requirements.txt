@@ -1,0 +1,11 @@
+nltk
+numpy
+rdkit
+selfies
+sklearn
+py2opsin
+tqdm
+pandas
+sacrebleu
+Levenshtein
+rdchiral
