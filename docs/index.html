@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChemEval: Multi-Level Chemical Capability Evaluation</title>
+  <meta name="description" content="ChemEval is an ICLR 2026 benchmark for evaluating textual and multimodal chemical capabilities of large language models across 4 levels, 13 dimensions, and 62 tasks.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #57636f;
+      --paper: #ffffff;
+      --soft: #f3f7f6;
+      --line: #d7e2df;
+      --teal: #08766b;
+      --blue: #2457c5;
+      --amber: #b46b00;
+      --red: #b42318;
+      --code: #101828;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      width: calc(100% - 36px);
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 58px;
+      font-size: 14px;
+    }
+
+    nav strong {
+      color: var(--teal);
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    nav div {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      min-height: 560px;
+      padding: 76px 0 64px;
+      background-image:
+        linear-gradient(90deg, rgba(246, 250, 249, 0.98) 0%, rgba(246, 250, 249, 0.94) 45%, rgba(246, 250, 249, 0.72) 100%),
+        url("assets/chemeval-pipeline.png");
+      background-position: center, right 54px center;
+      background-repeat: no-repeat;
+      background-size: cover, 760px auto;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-content {
+      max-width: 740px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 58px;
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 18px 0 16px;
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 720px;
+      overflow-wrap: break-word;
+    }
+
+    .authors {
+      color: #2f3a45;
+      font-size: 14px;
+      margin: 0 0 20px;
+      max-width: 760px;
+      overflow-wrap: break-word;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      border: 1px solid #a9bbb8;
+      background: #ffffff;
+      color: #20313c;
+      border-radius: 7px;
+      padding: 0 13px;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .button.primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #ffffff;
+    }
+
+    section {
+      padding: 50px 0;
+    }
+
+    .band {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 31px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      margin: 0 0 22px;
+      color: var(--muted);
+      max-width: 850px;
+      font-size: 16px;
+      overflow-wrap: break-word;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat,
+    .level,
+    .finding,
+    .entry {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--teal);
+      font-size: 32px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span,
+    .level p,
+    .finding p,
+    .entry p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .levels {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .level {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .level-number {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #e5f4f1;
+      color: var(--teal);
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .level h3,
+    .finding h3,
+    .entry h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .level p,
+    .finding p,
+    .entry p {
+      margin: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      border: 1px solid #bfd2ce;
+      border-radius: 6px;
+      color: #344944;
+      background: #f8fbfa;
+      padding: 4px 7px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pipeline {
+      margin: 24px 0 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 12px;
+    }
+
+    .pipeline img {
+      display: block;
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .caption {
+      margin: 10px 4px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .findings {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .finding:nth-child(1) h3 {
+      color: var(--blue);
+    }
+
+    .finding:nth-child(2) h3 {
+      color: var(--amber);
+    }
+
+    .finding:nth-child(3) h3 {
+      color: var(--red);
+    }
+
+    .entries {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    pre {
+      overflow: auto;
+      background: var(--code);
+      color: #eef4f7;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 16px 0 0;
+    }
+
+    code {
+      font-family: "Cascadia Mono", Consolas, monospace;
+    }
+
+    footer {
+      padding: 26px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .hero {
+        min-height: 0;
+        padding: 42px 0 50px;
+        background-image:
+          linear-gradient(180deg, rgba(246, 250, 249, 0.99) 0%, rgba(246, 250, 249, 0.96) 62%, rgba(246, 250, 249, 0.86) 100%),
+          url("assets/chemeval-pipeline.png");
+        background-position: center, center bottom 24px;
+        background-size: cover, 92vw auto;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .subtitle {
+        font-size: 17px;
+      }
+
+      .stats,
+      .levels,
+      .findings,
+      .entries {
+        grid-template-columns: 1fr;
+      }
+
+      .level {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <strong>ChemEval</strong>
+      <div>
+        <a href="#framework">Framework</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#code">Code</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-content">
+        <div class="eyebrow">ICLR 2026 Conference Paper</div>
+        <h1>ChemEval</h1>
+        <p class="subtitle">A multi-level and fine-grained chemical capability evaluation benchmark for large language models.</p>
+        <p class="authors">Yuqing Huang, Rongyang Zhang, Xuesong He, Xuyang Zhi, Hao Wang, Nuo Chen, Zongbo Liu, Xin Li, Feiyang Xu, Deguang Liu, Huadong Liang, Yi Li, Jian Cui, Yin Xu, Shijin Wang, Qi Liu, Defu Lian, Guiquan Liu, Enhong Chen</p>
+        <div class="buttons">
+          <a class="button primary" href="https://openreview.net/forum?id=JrqjSkEPrX">Paper</a>
+          <a class="button" href="https://openreview.net/pdf?id=JrqjSkEPrX">PDF</a>
+          <a class="button" href="https://huggingface.co/datasets/Ooo1/ChemEval">Dataset</a>
+          <a class="button" href="https://github.com/USTC-StarTeam/ChemEval">Code</a>
+          <a class="button" href="#citation">BibTeX</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap stats">
+        <article class="stat">
+          <strong>4</strong>
+          <span>Progressive chemical assessment levels.</span>
+        </article>
+        <article class="stat">
+          <strong>13</strong>
+          <span>Fine-grained capability dimensions.</span>
+        </article>
+        <article class="stat">
+          <strong>62</strong>
+          <span>Textual and multimodal task categories.</span>
+        </article>
+        <article class="stat">
+          <strong>3,160</strong>
+          <span>Reported text and multimodal evaluation examples.</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="framework">
+      <div class="wrap">
+        <h2>Evaluation Framework</h2>
+        <p class="section-lead">ChemEval is organized as a progression from core chemical knowledge to literature assimilation, molecular understanding, and high-level scientific deduction.</p>
+        <div class="levels">
+          <article class="level">
+            <div class="level-number">1</div>
+            <div>
+              <h3>Advanced Knowledge Question Answering</h3>
+              <p>Objective and subjective chemistry QA covering terminology, concepts, quantitative analysis, and cross-modal reasoning.</p>
+              <div class="tags">
+                <span class="tag">Objective QA</span>
+                <span class="tag">Subjective QA</span>
+                <span class="tag">15 tasks</span>
+              </div>
+            </div>
+          </article>
+          <article class="level">
+            <div class="level-number">2</div>
+            <div>
+              <h3>Literature Understanding</h3>
+              <p>Reading and extracting information from chemical papers, then generating abstracts, outlines, topics, and reaction-type judgments.</p>
+              <div class="tags">
+                <span class="tag">Information Extraction</span>
+                <span class="tag">Inductive Generation</span>
+                <span class="tag">19 tasks</span>
+              </div>
+            </div>
+          </article>
+          <article class="level">
+            <div class="level-number">3</div>
+            <div>
+              <h3>Molecular Understanding</h3>
+              <p>SMILES/IUPAC conversion, molecular property prediction, and molecular description from structures, spectra, and text.</p>
+              <div class="tags">
+                <span class="tag">Name Translation</span>
+                <span class="tag">Property Prediction</span>
+                <span class="tag">15 tasks</span>
+              </div>
+            </div>
+          </article>
+          <article class="level">
+            <div class="level-number">4</div>
+            <div>
+              <h3>Scientific Knowledge Deduction</h3>
+              <p>Retrosynthesis, reaction condition recommendation, reaction outcome prediction, and mechanism analysis for chemical synthesis.</p>
+              <div class="tags">
+                <span class="tag">Retrosynthesis</span>
+                <span class="tag">Reaction Mechanisms</span>
+                <span class="tag">13 tasks</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline" class="band">
+      <div class="wrap">
+        <h2>Benchmark Construction</h2>
+        <p class="section-lead">The benchmark combines open-source chemical datasets with expert-authored materials, then filters, audits, formats, and converts them into task-specific Q&A sets.</p>
+        <figure class="pipeline">
+          <img src="assets/chemeval-pipeline.png" alt="ChemEval data collection and benchmark generation pipeline">
+          <figcaption class="caption">ChemEval data collection and Q&A construction pipeline from the ICLR 2026 paper.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="findings">
+      <div class="wrap">
+        <h2>Empirical Readout</h2>
+        <p class="section-lead">ChemEval is designed to reveal where current general, chemistry-specific, reasoning, and multimodal models succeed or fail in chemistry.</p>
+        <div class="findings">
+          <article class="finding">
+            <h3>General LLMs</h3>
+            <p>Strong at literature understanding and instruction following, but weaker on deep molecular understanding and scientific inference.</p>
+          </article>
+          <article class="finding">
+            <h3>Chemical LLMs</h3>
+            <p>Often better on technical chemistry tasks such as terminology and molecular properties, while showing limitations in broad language behavior.</p>
+          </article>
+          <article class="finding">
+            <h3>Future Direction</h3>
+            <p>Scaling and few-shot prompting are useful but insufficient; stronger chemical AI needs domain tools, simulation, and multimodal grounding.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="code" class="band">
+      <div class="wrap">
+        <h2>Code And Data</h2>
+        <p class="section-lead">This repository provides answer extraction, LLM-based grading, and code-based metric scripts for textual and multimodal ChemEval tasks.</p>
+        <div class="entries">
+          <article class="entry">
+            <h3>Textual Evaluation</h3>
+            <p>Use <code>Textual/code evaluate/</code> for deterministic metrics and <code>Textual/LLM evaluate/</code> for LLM-based grading.</p>
+            <pre><code>python "Textual/code evaluate/1_Split_filename.py"
+python "Textual/code evaluate/2_Extract.py"
+python "Textual/code evaluate/3_Evaluate.py"</code></pre>
+          </article>
+          <article class="entry">
+            <h3>Multimodal Evaluation</h3>
+            <p>Use <code>Multimodel/</code> for multimodal prompt preparation, LLM-based processing, and code-based evaluation.</p>
+            <pre><code>python "Multimodel/3_code_evaluate/1Extract.py"
+python "Multimodel/3_code_evaluate/2Evaluate.py"</code></pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation">
+      <div class="wrap">
+        <h2>Citation</h2>
+        <pre><code>@inproceedings{
+huang2026chemeval,
+title={ChemEval: A Multi-level and Fine-grained Chemical Capability Evaluation for Large Language Models},
+author={Yuqing Huang and Rongyang Zhang and Xuesong He and Xuyang Zhi and Hao Wang and Nuo Chen and Zongbo Liu and Xin Li and Feiyang Xu and Deguang Liu and Huadong Liang and Yi Li and Jian Cui and Yin Xu and Shijin Wang and Qi Liu and Defu Lian and Guiquan Liu and Enhong Chen},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=JrqjSkEPrX}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">University of Science and Technology of China and iFLYTEK. Code: <a href="https://github.com/USTC-StarTeam/ChemEval">USTC-StarTeam/ChemEval</a>.</div>
+  </footer>
+</body>
+</html>
