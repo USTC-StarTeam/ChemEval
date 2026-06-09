@@ -133,6 +133,13 @@
       overflow-wrap: break-word;
     }
 
+    .author-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: -10px 0 20px;
+      max-width: 760px;
+    }
+
     .buttons {
       display: flex;
       flex-wrap: wrap;
@@ -383,6 +390,7 @@
       <div>
         <a href="#framework">Framework</a>
         <a href="#pipeline">Pipeline</a>
+        <a href="#findings">Results</a>
         <a href="#code">Code</a>
         <a href="#citation">Citation</a>
       </div>
@@ -396,6 +404,7 @@
         <h1>ChemEval</h1>
         <p class="subtitle">A multi-level and fine-grained chemical capability evaluation benchmark for large language models.</p>
         <p class="authors">Yuqing Huang, Rongyang Zhang, Xuesong He, Xuyang Zhi, Hao Wang, Nuo Chen, Zongbo Liu, Xin Li, Feiyang Xu, Deguang Liu, Huadong Liang, Yi Li, Jian Cui, Yin Xu, Shijin Wang, Qi Liu, Defu Lian, Guiquan Liu, Enhong Chen</p>
+        <p class="author-note">University of Science and Technology of China; iFLYTEK Co., Ltd. Yuqing Huang and Rongyang Zhang contributed equally. The paper marks Hao Wang, Xin Li, Guiquan Liu, and Enhong Chen as corresponding authors.</p>
         <div class="buttons">
           <a class="button primary" href="https://openreview.net/forum?id=JrqjSkEPrX">Paper</a>
           <a class="button" href="https://openreview.net/pdf?id=JrqjSkEPrX">PDF</a>
@@ -492,6 +501,10 @@
           <img src="assets/chemeval-pipeline.png" alt="ChemEval data collection and benchmark generation pipeline">
           <figcaption class="caption">ChemEval data collection and Q&A construction pipeline from the ICLR 2026 paper.</figcaption>
         </figure>
+        <figure class="pipeline">
+          <img src="assets/chemeval-distribution.png" alt="ChemEval task and reaction-type distribution" loading="lazy">
+          <figcaption class="caption">Distribution of ChemEval task modalities and chemical reaction types.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -513,6 +526,22 @@
             <p>Scaling and few-shot prompting are useful but insufficient; stronger chemical AI needs domain tools, simulation, and multimodal grounding.</p>
           </article>
         </div>
+        <figure class="pipeline">
+          <img src="assets/chemeval-text-zero-shot-results.png" alt="Representative multi-level 0-shot text task results on ChemEval" loading="lazy">
+          <figcaption class="caption">Representative multi-level 0-shot text task results.</figcaption>
+        </figure>
+        <figure class="pipeline">
+          <img src="assets/chemeval-few-shot-change.png" alt="Three-shot performance changes relative to zero-shot on ChemEval text tasks" loading="lazy">
+          <figcaption class="caption">Three-shot performance changes relative to zero-shot text-task performance.</figcaption>
+        </figure>
+        <figure class="pipeline">
+          <img src="assets/chemeval-scaling-results.png" alt="Impact of model scaling on ChemEval task performance" loading="lazy">
+          <figcaption class="caption">Impact of model scaling on selected ChemEval tasks.</figcaption>
+        </figure>
+        <figure class="pipeline">
+          <img src="assets/chemeval-multimodal-results.png" alt="Performance overview of multimodal ChemEval tasks" loading="lazy">
+          <figcaption class="caption">Performance overview of multimodal ChemEval tasks.</figcaption>
+        </figure>
       </div>
     </section>
 

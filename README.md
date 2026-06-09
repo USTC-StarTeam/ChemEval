@@ -10,6 +10,11 @@ Official repository for **ChemEval: A Multi-level and Fine-grained Chemical Capa
 
 ChemEval is a fine-grained benchmark for evaluating large language models and multimodal large language models in chemistry. It organizes chemical capability assessment into **4 progressive levels**, **13 capability dimensions**, and **62 textual and multimodal tasks**, spanning textbook-level chemical knowledge, literature understanding, molecular understanding, and scientific knowledge deduction.
 
+**Authors:** Yuqing Huang*, Rongyang Zhang*, Xuesong He, Xuyang Zhi, Hao Wang, Nuo Chen, Zongbo Liu, Xin Li, Feiyang Xu, Deguang Liu, Huadong Liang, Yi Li, Jian Cui, Yin Xu, Shijin Wang, Qi Liu, Defu Lian, Guiquan Liu, Enhong Chen.
+
+**Affiliations:** University of Science and Technology of China; iFLYTEK Co., Ltd.  
+`*` Equal contribution. The paper marks Hao Wang, Xin Li, Guiquan Liu, and Enhong Chen as corresponding authors.
+
 **Links:** [Paper](https://openreview.net/forum?id=JrqjSkEPrX) | [PDF](https://openreview.net/pdf?id=JrqjSkEPrX) | [arXiv](https://arxiv.org/abs/2409.13989) | [Dataset](https://huggingface.co/datasets/Ooo1/ChemEval) | [Project Page](https://ustc-starteam.github.io/ChemEval/) | [Citation](#citation)
 
 <p align="center">
@@ -35,11 +40,41 @@ ChemEval is a fine-grained benchmark for evaluating large language models and mu
 
 The ICLR 2026 version reports **1,960 text examples** and **1,200 multimodal examples**. Across the 62 task categories, the paper describes 25 adapted open-source tasks and 37 in-house tasks developed with domain experts.
 
+<p align="center">
+  <img src="docs/assets/chemeval-distribution.png" alt="ChemEval task and reaction-type distribution" width="860">
+</p>
+
 ## Key Findings
 
 The paper reports that general-purpose LLMs are strong at literature understanding and instruction following, but struggle on tasks requiring deep molecular understanding and scientific inference. Chemistry-specialized LLMs perform better on technical chemistry tasks, especially terminology and molecular property tasks, but can show weaker general language ability and instruction following.
 
 The results also suggest that scaling, few-shot prompting, and reasoning-oriented models help in some settings, but are not sufficient by themselves for complex chemical tasks. ChemEval is intended to make these gaps measurable and to encourage tighter integration of LLMs with chemical knowledge, simulation tools, and multimodal evidence.
+
+## Experimental Highlights
+
+### Representative 0-Shot Text Results
+
+<p align="center">
+  <img src="docs/assets/chemeval-text-zero-shot-results.png" alt="Representative multi-level 0-shot text task results on ChemEval" width="920">
+</p>
+
+### Few-Shot Changes
+
+<p align="center">
+  <img src="docs/assets/chemeval-few-shot-change.png" alt="Three-shot performance changes relative to zero-shot on ChemEval text tasks" width="920">
+</p>
+
+### Model Scaling
+
+<p align="center">
+  <img src="docs/assets/chemeval-scaling-results.png" alt="Impact of model scaling on ChemEval task performance" width="920">
+</p>
+
+### Multimodal Results
+
+<p align="center">
+  <img src="docs/assets/chemeval-multimodal-results.png" alt="Performance overview of multimodal ChemEval tasks" width="920">
+</p>
 
 ## Repository Structure
 
@@ -169,7 +204,7 @@ The project page is available under `docs/index.html` and is intended for GitHub
 https://ustc-starteam.github.io/ChemEval/
 ```
 
-If Pages is not enabled yet, configure GitHub Pages to serve from the repository's `docs/` directory on the main branch.
+GitHub Pages is configured to serve this project page from the repository's `docs/` directory on the `main` branch.
 
 ## License
 
